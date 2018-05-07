@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using RasaLib.HTTP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,8 @@ namespace RasaLib.Rasa
     /// </summary>
     public class UserQuery
     {
+        const string API_URL = "http://localhost:5000";
+
         public IRasaModel Model { get; }
         public string Query { get; }
 
@@ -22,7 +26,7 @@ namespace RasaLib.Rasa
 
         public RasaResponse Send()
         {
-
+            JObject response = Http.PostJson($"{API_URL}/parse", new QueryData { Q = Query, Model = Model.Name });
         }
     }
 }

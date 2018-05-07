@@ -15,7 +15,7 @@ namespace RasaLib.HTTP
     /// </summary>
     internal class Http
     {
-        public static void PostJson<T>(string uri, T data)
+        public static JObject PostJson<T>(string uri, T data)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
             httpWebRequest.ContentType = "application/json";
@@ -35,6 +35,7 @@ namespace RasaLib.HTTP
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 var result = streamReader.ReadToEnd();
+                return JObject.Parse(result);
             }
         }
     }
