@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RasaLib
+namespace RasaLib.HTTP
 {
-    public class Class1
+    /// <summary>
+    /// Http Request handler
+    /// </summary>
+    internal class Http
     {
+
     }
 }
