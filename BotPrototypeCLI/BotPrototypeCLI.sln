@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotPrototypeCLI", "BotPrototypeCLI\BotPrototypeCLI.csproj", "{D2D1DAAD-3D4D-428D-B702-7767FBC6E375}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RasaLib", "..\RasaLib\RasaLib.csproj", "{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D2D1DAAD-3D4D-428D-B702-7767FBC6E375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2D1DAAD-3D4D-428D-B702-7767FBC6E375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2D1DAAD-3D4D-428D-B702-7767FBC6E375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
