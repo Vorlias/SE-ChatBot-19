@@ -11,22 +11,24 @@ namespace RasaLib.Rasa
     /// <summary>
     /// An object that represents a query by a user
     /// </summary>
-    public class UserQuery
+    public class RasaQuery
     {
         const string API_URL = "http://localhost:5000";
 
-        public IRasaModel Model { get; }
+        public string Model { get; }
         public string Query { get; }
 
-        public UserQuery(IRasaModel model, string query)
+        public RasaQuery(string model, string query)
         {
             Model = model;
             Query = query;
         }
 
-        public RasaResponse Send()
+        public RasaResponse GetResponse(string uri = API_URL)
         {
-            JObject response = Http.PostJson($"{API_URL}/parse", new QueryData { Q = Query, Model = Model.Name });
+            JObject response = Http.PostJson($"{uri}/parse", new QueryData { q = Query, model = Model });
+            RasaHttpResponseData data = response.ToObject<RasaHttpResponseData>();
+            return new RasaResponse(data);
         }
     }
 }

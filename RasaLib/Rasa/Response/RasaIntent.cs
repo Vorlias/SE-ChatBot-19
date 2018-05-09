@@ -9,12 +9,12 @@ namespace RasaLib.Rasa.Response
     /// <summary>
     /// The calculated intent from RASA
     /// </summary>
-    public class RasaIntent
+    public struct RasaIntent
     {
         /// <summary>
         /// The confidence that this intent matches
         /// </summary>
-        public double Confidence { get; internal set; }
+        public double Confidence { get; set; }
 
         /// <summary>
         /// The name of the intent

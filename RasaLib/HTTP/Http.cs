@@ -26,6 +26,11 @@ namespace RasaLib.HTTP
             {
                 string json = JObject.FromObject(data).ToString();
 
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("POST {0}\n{1}", uri, json);
+                Console.ForegroundColor = oldColor;
+
                 streamWriter.Write(json);
                 streamWriter.Flush();
                 streamWriter.Close();

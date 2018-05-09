@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotPrototypeCLI", "BotProto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RasaLib", "..\RasaLib\RasaLib.csproj", "{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RasaLib.Test", "..\RasaLib.Test\RasaLib.Test.csproj", "{B4DA85F3-9DB0-417D-90AA-1C24B2A5A2F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4DA85F3-9DB0-417D-90AA-1C24B2A5A2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4DA85F3-9DB0-417D-90AA-1C24B2A5A2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4DA85F3-9DB0-417D-90AA-1C24B2A5A2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4DA85F3-9DB0-417D-90AA-1C24B2A5A2F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RasaLib\RasaLib.csproj">
+      <Project>{81F6D6C2-71CC-43A2-AD4B-6B222EB82C22}</Project>
+      <Name>RasaLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

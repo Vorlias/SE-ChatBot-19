@@ -2,7 +2,7 @@
 {
     public struct QueryData
     {
-        public string Q { get; set; }
-        public string Model { get; set; }
+        public string q { get; set; }
+        public string model { get; set; }
     }
 }

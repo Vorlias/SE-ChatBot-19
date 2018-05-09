@@ -45,6 +45,13 @@
   <ItemGroup>
     <Compile Include="HTTP\Http.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rasa\QueryData.cs" />
+    <Compile Include="Rasa\IRasaModel.cs" />
+    <Compile Include="Rasa\RasaHttpResponseData.cs" />
+    <Compile Include="Rasa\RasaResponse.cs" />
+    <Compile Include="Rasa\Response\RasaEntity.cs" />
+    <Compile Include="Rasa\Response\RasaIntent.cs" />
+    <Compile Include="Rasa\RasaQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

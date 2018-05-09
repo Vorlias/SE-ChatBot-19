@@ -1,14 +1,23 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RasaLib.Rasa;
 
 namespace RasaLib.Test
 {
+    public class RasaTutorialModel : IRasaModel
+    {
+        public string Name => "rasaTutorialBot";
+    }
+
     [TestClass]
-    public class UnitTest1
+    public class RasaIntentTesting
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestBasicIntent()
         {
+            RasaQuery userQuery = new RasaQuery(new RasaTutorialModel(), "hello rasa");
+            var response = userQuery.GetResponse();
+            
         }
     }
 }
