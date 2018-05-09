@@ -14,19 +14,16 @@ namespace RasaLib.Rasa
     public class RasaQuery
     {
         const string API_URL = "http://localhost:5000";
-
-        public string Model { get; }
         public string Query { get; }
 
-        public RasaQuery(string model, string query)
+        public RasaQuery(string query)
         {
-            Model = model;
             Query = query;
         }
 
         public RasaResponse GetResponse(string uri = API_URL)
         {
-            JObject response = Http.PostJson($"{uri}/parse", new QueryData { q = Query, model = Model });
+            JObject response = Http.PostJson($"{uri}/parse", new QueryData { q = Query });
             RasaHttpResponseData data = response.ToObject<RasaHttpResponseData>();
             return new RasaResponse(data);
         }
