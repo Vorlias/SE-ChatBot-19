@@ -1,0 +1,114 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "requirements for software development",
+        "intent": "major_recommended",
+        "entities": [
+          {
+            "start": 17,
+            "end": 37,
+            "value": "software development",
+            "entity": "major_type"
+          }
+        ]
+      },
+      {
+        "text": "what do i take for it service provision",
+        "intent": "major_recommended",
+        "entities": [
+          {
+            "start": 19,
+            "end": 39,
+            "value": "it service provision",
+            "entity": "major_type"
+          }
+        ]
+      },
+      {
+        "text": "best papers for networking",
+        "intent": "major_recommended",
+        "entities": [
+          {
+            "start": 16,
+            "end": 26,
+            "value": "networking",
+            "entity": "major_type"
+          }
+        ]
+      },
+      {
+        "text": "what do i need to do web development",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 21,
+            "end": 36,
+            "value": "web development",
+            "entity": "paper_name"
+          }
+        ]
+      },
+      {
+        "text": "what do i take before software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 22,
+            "end": 42,
+            "value": "software engineering",
+            "entity": "paper_name"
+          }
+        ]
+      },
+      {
+        "text": "i want to do research and development",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 13,
+            "end": 37,
+            "value": "research and development",
+            "entity": "paper_name"
+          }
+        ]
+      },
+      {
+        "text": "research and development requirements",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 0,
+            "end": 24,
+            "value": "research and development",
+            "entity": "paper_name"
+          }
+        ]
+      },
+      {
+        "text": "papers required for programming languages",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 20,
+            "end": 41,
+            "value": "programming languages",
+            "entity": "paper_name"
+          }
+        ]
+      },
+      {
+        "text": "recommended papers for computer science",
+        "intent": "",
+        "entities": [
+          {
+            "start": 23,
+            "end": 39,
+            "value": "computer science",
+            "entity": "major_type"
+          }
+        ]
+      }
+    ]
+  }
+}
