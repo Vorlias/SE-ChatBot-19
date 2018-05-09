@@ -23,7 +23,7 @@ namespace RasaLib.Rasa
 
         public RasaResponse GetResponse(string uri = API_URL)
         {
-            JObject response = Http.PostJson($"{uri}/parse", new QueryData { q = Query });
+            JObject response = Http.PostJson($"{uri}/parse", new QueryData { Query = Query });
             RasaHttpResponseData data = response.ToObject<RasaHttpResponseData>();
             return new RasaResponse(data);
         }

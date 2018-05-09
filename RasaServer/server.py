@@ -23,13 +23,13 @@ class ChatBotServer(BaseHTTPRequestHandler):
         End point for POST /parse
         """
 
-        if 'q' in params:
+        if 'Query' in params:
             self.send_response(200)
             self.send_header('Content-Type', 'text/json')
             self.end_headers()
 
             interpreter = Interpreter.load('./models/nlu/default/' + const.MODEL_NAME)
-            results = interpreter.parse(params['q'])       
+            results = interpreter.parse(params['Query'])       
             return json.dumps(results)
         else:
             self.send_error(404)
