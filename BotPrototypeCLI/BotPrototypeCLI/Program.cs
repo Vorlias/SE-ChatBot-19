@@ -19,7 +19,7 @@ namespace BotPrototypeCLI
 
                 if (input != string.Empty)
                 {
-                    RasaQuery rasaQuery = new RasaQuery("aut", input);
+                    RasaQuery rasaQuery = new RasaQuery(input);
                     var result = rasaQuery.GetResponse();
                     Console.WriteLine("Got: {0} @{1}% confidence", result.Intent.Name, result.Intent.Confidence * 100f);
                     foreach (var entity in result.Entities)
