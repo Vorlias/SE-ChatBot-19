@@ -51,27 +51,8 @@ class ChatBotServer(BaseHTTPRequestHandler):
 
 
     def do_GET(self):
-        url = urlparse(self.path)
-        path =  url.path[1:]
-        params = get_parameters(url.query)
-
-        print(json.dumps(params))
-       
-        if (path in dir(self)):
-            method = getattr(self, path)
-            self.wfile.write(bytes(method(params), "utf8"))
-        elif (path == '/responsedd' and 'question' in params):
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/json')
-            self.end_headers()
-
-            interpreter = Interpreter.load('./models/nlu/default/chat')
-            results = interpreter.parse(params['question'])
-
-            self.wfile.write(bytes(json.dumps(results), "utf8"))
-        else:
-            self.send_error(404, "Not Found")
-            self.wfile.write(bytes(path, "utf8"))
+        self.send_error(404, "Not Found")
+        self.wfile.write(bytes("Not Found", "utf8"))
 
         return
 
