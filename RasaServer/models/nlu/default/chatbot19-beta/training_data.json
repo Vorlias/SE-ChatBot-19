@@ -2,111 +2,280 @@
   "rasa_nlu_data": {
     "common_examples": [
       {
-        "intent": "major_recommended",
-        "entities": [
-          {
-            "start": 17,
-            "end": 37,
-            "value": "software development",
-            "entity": "major_type"
-          }
-        ],
-        "text": "requirements for software development"
-      },
-      {
-        "intent": "major_recommended",
+        "intent": "paper_requirements",
         "entities": [
           {
             "start": 19,
             "end": 39,
-            "value": "it service provision",
-            "entity": "major_type"
-          }
-        ],
-        "text": "what do i take for it service provision"
-      },
-      {
-        "intent": "major_recommended",
-        "entities": [
-          {
-            "start": 16,
-            "end": 26,
-            "value": "networking",
-            "entity": "major_type"
-          }
-        ],
-        "text": "best papers for networking"
-      },
-      {
-        "intent": "paper_requirements",
-        "entities": [
-          {
-            "start": 21,
-            "end": 36,
-            "value": "web development",
-            "entity": "paper_name"
-          }
-        ],
-        "text": "what do i need to do web development"
-      },
-      {
-        "intent": "paper_requirements",
-        "entities": [
-          {
-            "start": 22,
-            "end": 42,
             "value": "software engineering",
-            "entity": "paper_name"
+            "entity": "paper"
+          },
+          {
+            "start": 0,
+            "end": 14,
+            "value": "what do i need",
+            "entity": "question"
           }
         ],
-        "text": "what do i take before software engineering"
+        "text": "what do i need for software engineering"
       },
       {
         "intent": "paper_requirements",
         "entities": [
           {
-            "start": 13,
-            "end": 37,
-            "value": "research and development",
-            "entity": "paper_name"
+            "start": 17,
+            "end": 32,
+            "value": "web development",
+            "entity": "paper"
           }
         ],
-        "text": "i want to do research and development"
+        "text": "requirements for web development"
+      },
+      {
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 25,
+            "end": 49,
+            "value": "research and development",
+            "entity": "paper"
+          }
+        ],
+        "text": "what should i take to do research and development"
+      },
+      {
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 32,
+            "end": 45,
+            "value": "programming 2",
+            "entity": "paper"
+          }
+        ],
+        "text": "what are the pre-requisites for programming 2"
+      },
+      {
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 31,
+            "end": 62,
+            "value": "program design and construction",
+            "entity": "paper"
+          }
+        ],
+        "text": "what are the co-requisites for program design and construction"
       },
       {
         "intent": "paper_requirements",
         "entities": [
           {
             "start": 0,
-            "end": 24,
-            "value": "research and development",
-            "entity": "paper_name"
+            "end": 21,
+            "value": "IT project management",
+            "entity": "paper"
           }
         ],
-        "text": "research and development requirements"
+        "text": "IT project management requirements"
       },
       {
-        "intent": "paper_requirements",
+        "intent": "availability",
         "entities": [
           {
-            "start": 20,
-            "end": 41,
+            "start": 50,
+            "end": 54,
+            "value": "2018",
+            "entity": "year"
+          },
+          {
+            "start": 17,
+            "end": 38,
             "value": "programming languages",
-            "entity": "paper_name"
+            "entity": "paper"
+          },
+          {
+            "start": 5,
+            "end": 13,
+            "value": "semester",
+            "entity": "time"
           }
         ],
-        "text": "papers required for programming languages"
+        "text": "what semester is programming languages offered in 2018"
       },
       {
+        "intent": "availability",
+        "entities": [
+          {
+            "start": 14,
+            "end": 37,
+            "value": "logical database design",
+            "entity": "paper"
+          },
+          {
+            "start": 0,
+            "end": 4,
+            "value": "when",
+            "entity": "time"
+          }
+        ],
+        "text": "when can i do logical database design"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 32,
+            "end": 52,
+            "value": "software development",
+            "entity": "major"
+          },
+          {
+            "start": 5,
+            "end": 18,
+            "value": "should i take",
+            "entity": "question"
+          }
+        ],
+        "text": "what should i take if i'm doing software development"
+      },
+      {
+        "intent": "suggested_papers",
         "entities": [
           {
             "start": 23,
-            "end": 39,
-            "value": "computer science",
-            "entity": "major_type"
+            "end": 33,
+            "value": "IT service",
+            "entity": "major"
           }
         ],
-        "text": "recommended papers for computer science"
+        "text": "what should i take for IT service"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 29,
+            "end": 45,
+            "value": "computer science",
+            "entity": "major"
+          },
+          {
+            "start": 0,
+            "end": 11,
+            "value": "what papers",
+            "entity": "question"
+          }
+        ],
+        "text": "what papers are suitable for computer science"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 0,
+            "end": 10,
+            "value": "networking",
+            "entity": "major"
+          }
+        ],
+        "text": "networking papers"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 30,
+            "end": 48,
+            "value": "software developer",
+            "entity": "job"
+          },
+          {
+            "start": 0,
+            "end": 11,
+            "value": "what papers",
+            "entity": "question"
+          }
+        ],
+        "text": "what papers do i need to be a software developer"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 15,
+            "end": 28,
+            "value": "web developer",
+            "entity": "job"
+          }
+        ],
+        "text": "i want to be a web developer"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 35,
+            "end": 51,
+            "value": "business analyst",
+            "entity": "job"
+          },
+          {
+            "start": 5,
+            "end": 16,
+            "value": "should i do",
+            "entity": "question"
+          }
+        ],
+        "text": "what should i do if i want to be a business analyst"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 13,
+            "end": 30,
+            "value": "project managment",
+            "entity": "job"
+          }
+        ],
+        "text": "i want to do project managment"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 20,
+            "end": 32,
+            "value": "scrum master",
+            "entity": "job"
+          }
+        ],
+        "text": "i'm looking to be a scrum master"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 18,
+            "end": 23,
+            "value": "agile",
+            "entity": "job"
+          }
+        ],
+        "text": "i'm interested in agile"
+      },
+      {
+        "intent": "suggested_papers",
+        "entities": [
+          {
+            "start": 15,
+            "end": 23,
+            "value": "software developer",
+            "entity": "job"
+          }
+        ],
+        "text": "i want to make software"
       }
     ],
     "regex_features": [],

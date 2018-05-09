@@ -1,0 +1,49 @@
+What are the pre-requisites and co- requisites for <a specific paper>  .  
+If I take a <specific paper>  what other papers should I take next for <the software  dev major in the BCIS >. (eventually we ill expand the scope of majors - but limit the CatBot to this initially)
+What would be a suggested set of papers for a <the software  dev  major in the BCIS >? 
+Which papers are suitable for a <specific job> (like web developer, business analyst, software engineer, scrum master). 
+If I have failed <specific paper> what papers can I still take? (or how does this restrict what papers I can take)
+What semesters is <specific paper> offered in <specific year>
+
+entity paper:
+	software engineering
+	web development
+	research and development
+	
+entity job:
+	software developer
+	web developer
+	business analyst
+	scrum master
+	
+entity year:
+	2018
+	2019
+	...
+
+entity major:
+	software development
+	networking
+	it service
+	computer science
+
+intent: paper_requirements
+	what do i need for {paper}
+	requirements for {paper}
+	what should i do for {paper}
+	what are pre-requisites and co-requisites for {paper}
+	i want to take {paper}
+	
+	
+intent: availability
+	what semester is {paper} offered in {year}
+	when can i do {paper}
+	
+intent: suggested_papers
+	what should i take if i'm doing {major}
+	what should i take for {major}
+	what papers are suitable for {major}
+	{major} papers
+	
+	what papers are suitable for {job}
+	i want to be a {job}
