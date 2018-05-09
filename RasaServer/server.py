@@ -38,7 +38,7 @@ class ChatBotServer(BaseHTTPRequestHandler):
         url = urlparse(self.path)
         path =  url.path[1:]
 
-        if (self.headers['Content-Type'] == "text/json"):
+        if (self.headers['Content-Type'] == "application/json"):
             raw_data = self.rfile.read(int(self.headers['Content-Length']))
             data = json.loads(raw_data)
             if (path in dir(self)):
