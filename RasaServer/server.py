@@ -4,15 +4,6 @@ import json
 import const
 from rasa_nlu.model import Interpreter
 
-def get_parameters(query):
-    parts = query.split("&")
-    query = {}
-    for value in parts:
-        keyValue = value.split("=")
-        query[keyValue[0]] = keyValue[1]
-
-    return query
-
 class ChatBotServer(BaseHTTPRequestHandler):
     """
     The AI API server for handling RASA requests
@@ -23,18 +14,33 @@ class ChatBotServer(BaseHTTPRequestHandler):
         End point for POST /parse
         """
 
-        if 'Query' in params:
+        if const.QUERY_PARAM in params:
             self.send_response(200)
             self.send_header('Content-Type', 'text/json')
             self.end_headers()
 
-            interpreter = Interpreter.load('./models/nlu/default/' + const.MODEL_NAME)
-            results = interpreter.parse(params['Query'])       
+            # run the interpreter to get intents/entities from the question
+            interpreter = Interpreter.load(const.MODEL_DIRECTORY)
+            results = interpreter.parse(params[const.QUERY_PARAM])  
+
+            # output the resulting intents/entities of the query asked by the user     
             return json.dumps(results)
         else:
             self.send_error(404)
 
+    def do_GET(self):
+        """
+        Responds to GET requests
+        """
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/json')
+        self.end_headers()
+        self.wfile.write(bytes('{"Online": true}', "utf8"))
+
     def do_POST(self):
+        """
+        Responds to POST requests
+        """
         url = urlparse(self.path)
         path =  url.path[1:]
 
@@ -49,19 +55,12 @@ class ChatBotServer(BaseHTTPRequestHandler):
         else:
             self.send_error(404, "Not Found")
 
-
-    def do_GET(self):
-        self.send_error(404, "Not Found")
-        self.wfile.write(bytes("Not Found", "utf8"))
-
-        return
-
     
 def run():
     """
     Main function for running the bot
     """
-    server_address = ('127.0.0.1', 5000)
+    server_address = ('', 5000)
     httpd = HTTPServer(server_address, ChatBotServer)
     httpd.serve_forever()
 
