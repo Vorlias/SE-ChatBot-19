@@ -20,4 +20,14 @@ namespace RasaLib.Metadata
             Aliases = aliases;
         }
     }
+
+    public class Papers
+    {
+        List<Paper> papers;
+
+        public Papers(string paperMetadataFile)
+        {
+
+        }
+    }
 }

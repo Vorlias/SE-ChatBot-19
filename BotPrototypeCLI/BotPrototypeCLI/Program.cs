@@ -1,4 +1,6 @@
-﻿using RasaLib.Rasa;
+﻿#define SHOW_DEBUG
+
+using RasaLib.Rasa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,20 @@ using System.Threading.Tasks;
 
 namespace BotPrototypeCLI
 {
+    public static class StrExtensions
+    {
+        public static bool ContainsIgnoreCase(this IEnumerable<string> strs, string value)
+        {
+            foreach (var str in strs)
+            {
+                if (str.ToLower() == value.ToLower())
+                    return true;
+            }
+
+            return false;
+        }
+    }
+
     class Paper
     {
         public string Name { get; set; }
@@ -54,34 +70,54 @@ namespace BotPrototypeCLI
                     if (result.Intent.Name == "paper_requirements")
                     {
                         var papers = result.Entities.Where(entity => entity.Entity == "paper").Select(entity => entity.Value);
-                        if (papers.Contains("software engineering"))
+
+                        var matchingPapers = papersTest.Where(paper => paper.Name.ToLower() == papers.First().ToLower() || 
+                        paper.Aliases.ContainsIgnoreCase(papers.First()) || 
+                        paper.PaperCode.ToLower() == papers.First().ToLower());
+
+                        if (papers.ContainsIgnoreCase("software engineering"))
                         {
                             WriteOutput("To do Contemporary Methods in Software Engineering, you are required to do either COMP603, COMP610 or ENSE600");
                         }
+                        else if (papers.ContainsIgnoreCase("web development"))
+                        {
+                            WriteOutput("Web Development does not require anything to do, but it is a third year paper.");
+                        }
                         
+                    }
+                    else if (result.Intent.Name == "suggested_papers")
+                    {
+                        var jobs = result.Entities.Where(entity => entity.Entity == "job").Select(entity => entity.Value);
+                        if (jobs.ContainsIgnoreCase("web developer"))
+                        {
+                            WriteOutput("I recommend COMP721 - Web Development");
+                        }
                     }
 
 
-                    //if (result.Intent != null)
-                    //    Console.WriteLine("Got: {0} @{1}% confidence", result.Intent.Name, result.Intent?.Confidence * 100f);
-                    //else
-                    //    Console.WriteLine("Got no intents.");
+#if SHOW_DEBUG
+                    if (result.Intent != null)
+                        Console.WriteLine("Got: {0} @{1}% confidence", result.Intent.Name, result.Intent?.Confidence * 100f);
+                    else
+                        Console.WriteLine("Got no intents.");
 
-                    //foreach (var entity in result.Entities)
-                    //{
-                    //    Console.WriteLine("\t{0}", entity);
-                    //}
+                    foreach (var entity in result.Entities)
+                    {
+                        Console.WriteLine("\t{0}", entity);
+                    }
 
-                    //Console.WriteLine("Other potential results:  ");
-                    //foreach (var intent in result.IntentRankings)
-                    //{
-                    //    Console.WriteLine("\tGot: {0} @{1}% confidence", intent.Name, intent.Confidence * 100);
-                    //    foreach (var entity in result.Entities)
-                    //    {
-                    //        Console.WriteLine("\t\t{0}", entity);
-                    //    }
-                    //}
+                    Console.WriteLine("Other potential results:  ");
+                    foreach (var intent in result.IntentRankings)
+                    {
+                        Console.WriteLine("\tGot: {0} @{1}% confidence", intent.Name, intent.Confidence * 100);
+                        foreach (var entity in result.Entities)
+                        {
+                            Console.WriteLine("\t\t{0}", entity);
+                        }
+                    }
+#endif
                 }
+                   
             }
             while (input != string.Empty);
         }

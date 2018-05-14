@@ -4,6 +4,8 @@ import json
 import const
 from rasa_nlu.model import Interpreter
 
+interpreter = Interpreter.load(const.MODEL_DIRECTORY)
+
 class ChatBotServer(BaseHTTPRequestHandler):
     """
     The AI API server for handling RASA requests
@@ -19,8 +21,7 @@ class ChatBotServer(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'text/json')
             self.end_headers()
 
-            # run the interpreter to get intents/entities from the question
-            interpreter = Interpreter.load(const.MODEL_DIRECTORY)
+            # run the interpreter to get intents/entities from the question  
             results = interpreter.parse(params[const.QUERY_PARAM])  
 
             # output the resulting intents/entities of the query asked by the user     
@@ -33,9 +34,9 @@ class ChatBotServer(BaseHTTPRequestHandler):
         Responds to GET requests
         """
         self.send_response(200)
-        self.send_header('Content-Type', 'text/json')
+        self.send_header('Content-Type', 'text/html')
         self.end_headers()
-        self.wfile.write(bytes('{"Online": true}', "utf8"))
+        self.wfile.write(bytes('<h1>Hello, World!</h1><p>If you\'re seeing this, Veronica is awake.</p>', "utf8"))
 
     def do_POST(self):
         """
@@ -64,4 +65,4 @@ def run():
     httpd = HTTPServer(server_address, ChatBotServer)
     httpd.serve_forever()
 
-run()
+run() 
