@@ -11,7 +11,20 @@ class ChatBotServer(BaseHTTPRequestHandler):
     The AI API server for handling RASA requests
     """
 
-    def parse(self, params):
+    def get_info(self, params):
+        """
+        Basically a check to see if the bot's online
+        """
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/json')
+        self.end_headers()
+        return json.dumps({
+            "Ok": True, 
+            "Version": '.'.join(str(x) for x in const.VERONICA_VERSION), 
+            "Name":const.VERONICA_NAME
+        })    
+
+    def post_parse(self, params):
         """
         End point for POST /parse
         """
@@ -33,10 +46,19 @@ class ChatBotServer(BaseHTTPRequestHandler):
         """
         Responds to GET requests
         """
-        self.send_response(200)
-        self.send_header('Content-Type', 'text/html')
-        self.end_headers()
-        self.wfile.write(bytes('<h1>Hello, World!</h1><p>If you\'re seeing this, Veronica is awake.</p>', "utf8"))
+        url = urlparse(self.path)
+        path =  url.path[1:]
+        method_name = 'get_' + path
+
+        if (method_name in dir(self)):
+            print("GET", path, "CALL", method_name)
+            method = getattr(self, method_name)
+            self.wfile.write(bytes(method(url.params), "utf8"))
+        else:
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html')
+            self.end_headers()
+            self.wfile.write(bytes('<h1>Hello, World!</h1><p>If you\'re seeing this, Veronica is awake.</p>', "utf8"))
 
     def do_POST(self):
         """
@@ -44,12 +66,14 @@ class ChatBotServer(BaseHTTPRequestHandler):
         """
         url = urlparse(self.path)
         path =  url.path[1:]
+        method_name = 'post_' + path
 
         if (self.headers['Content-Type'] == "application/json"):
             raw_data = self.rfile.read(int(self.headers['Content-Length']))
             data = json.loads(raw_data)
-            if (path in dir(self)):
-                method = getattr(self, path)
+            if (method_name in dir(self)):
+                print("POST", path, "CALL", method_name)
+                method = getattr(self, method_name)
                 self.wfile.write(bytes(method(data), "utf8"))
             else:
                 self.send_error(404, "Function "+path+" not defined")
