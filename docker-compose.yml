@@ -1,0 +1,14 @@
+# This will run the rasa server
+# then any extra stuff we need to run. :-)
+
+version: '3'
+services:
+  server:
+    build: ./RasaServer
+    command: python server.py
+    volumes:
+     - .:/code
+    ports:
+     - "5000:5000"
+  #TODO: Add Web, map to 80 -> Link to 5000.
+  #web:
