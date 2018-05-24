@@ -21,6 +21,7 @@ namespace RasaLib.Rasa
             Query = query;
         }
 
+
         public RasaResponse GetResponse(string uri = API_URL)
         {
             JObject response = Http.PostJson($"{uri}/parse", new QueryData { Query = Query });

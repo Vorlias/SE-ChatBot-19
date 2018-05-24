@@ -11,18 +11,32 @@ class ChatBotServer(BaseHTTPRequestHandler):
     The AI API server for handling RASA requests
     """
 
-    def get_info(self, params):
-        """
-        Basically a check to see if the bot's online
-        """
+    def get_ok(self, params):
         self.send_response(200)
         self.send_header('Content-Type', 'text/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        return json.dumps({
-            "Ok": True, 
-            "Version": '.'.join(str(x) for x in const.VERONICA_VERSION), 
-            "Name":const.VERONICA_NAME
-        })    
+
+        return json.dumps({"Ok": True});   
+
+    def get_test(self, params):
+        """
+        End point for POST /parse
+        """
+
+        if const.QUERY_PARAM in params:
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/json')
+            self.end_headers()
+
+            # run the interpreter to get intents/entities from the question  
+            results = interpreter.parse(params[const.QUERY_PARAM])  
+
+            # output the resulting intents/entities of the query asked by the user     
+            return json.dumps(results)
+        else:
+            self.send_error(404)
+
 
     def post_parse(self, params):
         """
@@ -32,6 +46,7 @@ class ChatBotServer(BaseHTTPRequestHandler):
         if const.QUERY_PARAM in params:
             self.send_response(200)
             self.send_header('Content-Type', 'text/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
 
             # run the interpreter to get intents/entities from the question  

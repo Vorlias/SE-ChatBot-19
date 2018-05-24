@@ -1,4 +1,6 @@
-﻿using RasaLib.Rasa.Response;
+﻿using Newtonsoft.Json.Linq;
+using RasaLib.Rasa.Response;
+using System.Text;
 
 namespace RasaLib.Rasa
 {
@@ -24,6 +26,11 @@ namespace RasaLib.Rasa
         /// The calculated intent
         /// </summary>
         public RasaIntent Intent { get; }
+
+        public string GetDebug()
+        {
+            return JObject.FromObject(this).ToString();
+        }
 
         internal RasaResponse(RasaHttpResponseData data)
         {
