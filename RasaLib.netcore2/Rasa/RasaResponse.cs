@@ -9,6 +9,12 @@ namespace RasaLib.Rasa
     /// </summary>
     public class RasaResponse
     {
+        public const string INTENT_SUGGESTION = "suggested_papers";
+        public const string INTENT_REQUIREMENTS = "paper_requirements";
+        public const string INTENT_AVAILABILITY = "availability";
+        public const string ENTITY_PAPER = "paper";
+        public const string ENTITY_JOB = "job";
+        public const string ENTITY_MAJOR = "major";
 
         public RasaEntity[] Entities { get; }
 
