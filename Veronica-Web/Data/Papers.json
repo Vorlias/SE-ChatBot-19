@@ -2,7 +2,7 @@
   {
     "Name": "Contemporary Methods in Software Engineering",
     "PaperCode": "ENSE701",
-    "Requirements": [],
+    "Requirements": ["COMP603", "COMP610", "ENSE600"],
     "Aliases": ["software engineering", "cmse", "se"]
   }
 ]
