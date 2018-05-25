@@ -85,11 +85,17 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
     public getMessages() {
         return this.state.messages.map(message => {
             if (message.isUser) {
-                return <div className="speech-bubble-user">{message.message}</div>;
+                return <div className="speech user">
+                    <div className="speech-name">You</div>
+                    <div className="speech-bubble-user">{message.message}</div>
+                </div>;
             }
             else {
-                return <div className="speech-bubble-bot">
+                return <div className="speech bot">
+                    <div className="speech-name">Veronica</div>
+                    <div className="speech-bubble-bot">
                     {message.message}
+                    </div>
                 </div>;
             }
         });
