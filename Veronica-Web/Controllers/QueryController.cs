@@ -17,18 +17,18 @@ namespace Veronica_Web.Controllers
     public class QueryResponse
     {
         public string Response { get; set; }
+
+        public static JsonResult Result(string response)
+        {
+            QueryResponse queryResponse = new QueryResponse() { Response = response };
+            return new JsonResult(queryResponse);
+        }
     }
 
     [Route("api/[controller]")]
     public class QueryController : Controller
     {
         Papers papers = new Papers("Data/Papers.json");
-
-        [HttpPost("[action]")]
-        public JsonResult Test(QueryArguments arguments)
-        {
-            return Json(new { Response = arguments.ToString() });
-        }
 
         [HttpPost("[action]")]
         public JsonResult Ask([FromBody] QueryArguments query)
@@ -45,7 +45,12 @@ namespace Veronica_Web.Controllers
                 RasaQuery rasaQuery = new RasaQuery(query.UserInput);
                 var response = rasaQuery.GetResponse();
 
-                if (response.Intent.Name == RasaResponse.INTENT_REQUIREMENTS)
+                if (response.Intent == null)
+                {
+                    return Json(new { response = "I have no idea what to respond with." });
+                }
+
+                if (response.Intent?.Name == RasaResponse.INTENT_REQUIREMENTS)
                 {
                     var paperEntities = response.Entities.Where(entity => entity.Entity == RasaResponse.ENTITY_PAPER);
                     if (paperEntities.Count() > 0)
@@ -57,17 +62,18 @@ namespace Veronica_Web.Controllers
                             var req = string.Join(" or ", matchingPaper.Requirements);
 
                             var str = $"{matchingPaper.Name} ({matchingPaper.PaperCode}) requires that you have completed {req}";
-                            return Json( new { Response = str });
+                            return Json(new { Response = str });
                         }
                         else
                         {
-                            return Json(new { Response = "I don't know what paper you're asking about." });
+                            return QueryResponse.Result("I don't know what paper you're asking about."); //Json(new { Response = "I don't know what paper you're asking about." });
                         }
                     }
                 }
                 else
-                {
-                    return Json(new { Response = $"I'm stupid and thought you are talking about {response.Intent.Name} with an accuracy of {(response.Intent.Confidence * 100).ToString("F2")}" });
+                { 
+
+                    return QueryResponse.Result($"I'm stupid and thought you are talking about {response.Intent.Name} with an accuracy of {(response.Intent.Confidence * 100).ToString("F2")}");
                 }
             }
 
