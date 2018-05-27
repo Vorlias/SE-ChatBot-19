@@ -19,9 +19,7 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
     constructor() {
         super();
         this.state = {
-            messages: [
-                {isUser: false, message: 'Hi, how can I help you?'}
-            ], ok: false
+            messages: TEST_DATA, ok: false
         };
         this.processUserQuery = this.processUserQuery.bind(this);
         this.processResponse = this.processResponse.bind(this);
@@ -34,10 +32,17 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
             })
     }
 
+    public forceScroll() {
+        var scroll = document.getElementById('user-chat') as HTMLElement;
+        scroll.scrollTo(0, scroll.scrollHeight + 100);
+    }
+
     public addMessage(message: Message) {
         let { state } = this;
         state.messages.push(message);
         this.setState({ messages: state.messages });
+
+        
     }
 
     public processResponse(response: Response) {
@@ -46,6 +51,7 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
         response.json().then((json: VeronicaResponse) => {
             message = { isUser: false, message: json.response };
             this.addMessage(message);
+            this.forceScroll();
         });
 
 
@@ -53,6 +59,8 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
 
     public processUserQuery(value: string) {
         this.addMessage({ isUser: true, message: value });
+        this.forceScroll();
+
         const { processResponse } = this;
 
         fetch('/api/Query/Ask', {
@@ -106,9 +114,14 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
             return <h1>Waiting for Veronica...</h1>;
         }
         else {
-            return <div className="userinput">
-                <input type="text" className="form-control" id="query" placeholder="Enter query" onKeyPress={this.onKeyPress.bind(this)} />
-                {this.getMessages()}
+            return <div>
+                <div className="user-chat" id="user-chat">
+                    {this.getMessages()}
+                </div>
+                <div className="user-input">
+                    <input type="text" className="form-control" id="query" placeholder="Enter query" onKeyPress={this.onKeyPress.bind(this)} />
+
+                </div>
             </div>;
         }
     }
@@ -119,3 +132,8 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
         });
     }*/
 }
+
+
+const TEST_DATA: Message[] = [
+    { isUser: false, message: "How can I help you?" },
+]

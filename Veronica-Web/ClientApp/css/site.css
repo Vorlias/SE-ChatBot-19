@@ -124,3 +124,21 @@
     font-weight: bold;
     margin-right: 10px;
 }
+
+.user-chat {
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.user-input 
+{
+    
+}
+
+@media (max-width: 767px) {
+    .user-chat {
+        height: calc(100vh - 130px);
+    }
+}
