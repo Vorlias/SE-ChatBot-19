@@ -10,12 +10,6 @@
             "end": 39,
             "value": "software engineering",
             "entity": "paper"
-          },
-          {
-            "start": 0,
-            "end": 14,
-            "value": "what do i need",
-            "entity": "question"
           }
         ]
       },
@@ -80,48 +74,6 @@
         ]
       },
       {
-        "text": "what semester is programming languages offered in 2018",
-        "intent": "availability",
-        "entities": [
-          {
-            "start": 50,
-            "end": 54,
-            "value": "2018",
-            "entity": "year"
-          },
-          {
-            "start": 17,
-            "end": 38,
-            "value": "programming languages",
-            "entity": "paper"
-          },
-          {
-            "start": 5,
-            "end": 13,
-            "value": "semester",
-            "entity": "time"
-          }
-        ]
-      },
-      {
-        "text": "when can i do logical database design",
-        "intent": "availability",
-        "entities": [
-          {
-            "start": 14,
-            "end": 37,
-            "value": "logical database design",
-            "entity": "paper"
-          },
-          {
-            "start": 0,
-            "end": 4,
-            "value": "when",
-            "entity": "time"
-          }
-        ]
-      },
-      {
         "text": "what should i take if i'm doing software development",
         "intent": "suggested_papers",
         "entities": [
@@ -130,12 +82,6 @@
             "end": 52,
             "value": "software development",
             "entity": "major"
-          },
-          {
-            "start": 5,
-            "end": 18,
-            "value": "should i take",
-            "entity": "question"
           }
         ]
       },
@@ -160,12 +106,6 @@
             "end": 45,
             "value": "computer science",
             "entity": "major"
-          },
-          {
-            "start": 0,
-            "end": 11,
-            "value": "what papers",
-            "entity": "question"
           }
         ]
       },
@@ -182,36 +122,6 @@
         ]
       },
       {
-        "text": "what papers do i need to be a software developer",
-        "intent": "suggested_papers",
-        "entities": [
-          {
-            "start": 30,
-            "end": 48,
-            "value": "software developer",
-            "entity": "job"
-          },
-          {
-            "start": 0,
-            "end": 11,
-            "value": "what papers",
-            "entity": "question"
-          }
-        ]
-      },
-      {
-        "text": "i want to be a web developer",
-        "intent": "suggested_papers",
-        "entities": [
-          {
-            "start": 15,
-            "end": 28,
-            "value": "web developer",
-            "entity": "job"
-          }
-        ]
-      },
-      {
         "text": "what should i do if i want to be a business analyst",
         "intent": "suggested_papers",
         "entities": [
@@ -220,12 +130,6 @@
             "end": 51,
             "value": "business analyst",
             "entity": "job"
-          },
-          {
-            "start": 5,
-            "end": 16,
-            "value": "should i do",
-            "entity": "question"
           }
         ]
       },
@@ -254,26 +158,26 @@
         ]
       },
       {
-        "text": "i'm interested in agile",
-        "intent": "suggested_papers",
+        "text": "i want to take contemporary methods in software engineering",
+        "intent": "paper_requirements",
         "entities": [
           {
-            "start": 18,
-            "end": 23,
-            "value": "agile",
-            "entity": "job"
+            "start": 15,
+            "end": 59,
+            "value": "contemporary methods in software engineering",
+            "entity": "paper"
           }
         ]
       },
       {
-        "text": "i want to make software",
-        "intent": "suggested_papers",
+        "text": "what is required for cmse",
+        "intent": "paper_requirements",
         "entities": [
           {
-            "start": 15,
-            "end": 23,
-            "value": "software developer",
-            "entity": "job"
+            "start": 21,
+            "end": 25,
+            "value": "cmse",
+            "entity": "paper"
           }
         ]
       }
