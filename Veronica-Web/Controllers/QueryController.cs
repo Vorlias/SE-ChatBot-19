@@ -80,7 +80,6 @@ namespace Veronica_Web.Controllers
             }
             else // Regular messages
             {
-
                 RasaQuery rasaQuery = new RasaQuery(query.UserInput);
                 RasaResponse rasaResponse = rasaQuery.GetResponse();
 

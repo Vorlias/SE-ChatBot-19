@@ -14,6 +14,7 @@ namespace RasaLib.Metadata
         public string[] Aliases { get; set; }
         public string[] Requirements { get; set; }
         public string PaperCode { get; set; }
+        public string[] Jobs { get; set; }
 
         public Paper(string paperCode, string name, params string[] aliases)
         {
@@ -27,6 +28,20 @@ namespace RasaLib.Metadata
     {
         List<Paper> papers;
         public IEnumerable<Paper> PaperList => papers;
+
+        public IEnumerable<Paper> FindPapersMatchingJob(string jobTitle)
+        {
+            List<Paper> matchingPapers = new List<Paper>();
+            foreach (var paper in papers)
+            {
+                if (paper.Jobs.Contains(jobTitle.ToLower()))
+                {
+                    matchingPapers.Add(paper);
+                }
+            }
+
+            return matchingPapers;
+        }
 
         public Paper FindPaperByKeyword(string keyword)
         {
