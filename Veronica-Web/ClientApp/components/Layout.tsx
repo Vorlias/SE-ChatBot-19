@@ -5,7 +5,14 @@ export interface LayoutProps {
     children?: React.ReactNode;
 }
 
+/**
+ * The layout component of the chat bot's interface
+ */
 export class Layout extends React.Component<LayoutProps, {}> {
+
+    /**
+     * Renders the layout
+     */
     public render() {
         return <div className='container-fluid'>
             <div className='row'>

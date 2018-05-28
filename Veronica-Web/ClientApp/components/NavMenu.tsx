@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+/**
+ * The navigation menu component for our chat bot
+ */
 export class NavMenu extends React.Component<{}, {}> {
+    /**
+     * Render the navigation menu
+     */
     public render() {
         return <div className='main-nav'>
                 <div className='navbar navbar-inverse'>
@@ -12,7 +18,7 @@ export class NavMenu extends React.Component<{}, {}> {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/' }>Veronica_Web</Link>
+                    <Link className='navbar-brand' to={ '/' }>Veronica ChatBot</Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>

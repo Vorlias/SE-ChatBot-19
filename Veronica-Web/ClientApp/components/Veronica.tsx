@@ -1,30 +1,49 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
+/**
+ * A message in the chat
+*/
 interface Message {
+    /**
+     * Whether or not the message is from the user
+     */
     isUser: boolean,
+
+    /**
+     * The message
+     */
     message: string,
 }
 
+/**
+ * A response from veronica
+ */
 interface VeronicaResponse {
     response: string,
 }
 
+/**
+ * The state of veronica
+ */
 interface VeronicaState {
     messages: Message[];
     ok: boolean;
 }
 
+/**
+ * The component for the Veronica chat interface 
+ */
 export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaState> {
     constructor() {
         super();
         this.state = {
-            messages: TEST_DATA, ok: false
+            messages: INITIAL_MESSAGES, ok: false
         };
         this.processUserQuery = this.processUserQuery.bind(this);
         this.processResponse = this.processResponse.bind(this);
         
-
+        // We check if Veronica is active first, if so we make the component active.
         fetch('http://localhost:5000/ok')
             .then(response => {
                 this.setState({ ok: true });
@@ -32,19 +51,28 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
             })
     }
 
+    /**
+     * Force the chat to scroll down
+     */
     public forceScroll() {
         var scroll = document.getElementById('user-chat') as HTMLElement;
         scroll.scrollTo(0, scroll.scrollHeight + 100);
     }
 
+    /**
+     * Add a message to the chat
+     * @param message The message to add
+     */
     public addMessage(message: Message) {
         let { state } = this;
         state.messages.push(message);
         this.setState({ messages: state.messages });
-
-        
     }
 
+    /**
+     * Process the response from our chat bot
+     * @param response The response from the chat bot request
+     */
     public processResponse(response: Response) {
         var message: Message = { isUser: false, message: 'If you see this, you failed lol' };
 
@@ -53,16 +81,20 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
             this.addMessage(message);
             this.forceScroll();
         });
-
-
     }
 
-    public processUserQuery(value: string) {
-        this.addMessage({ isUser: true, message: value });
+    /**
+     * Process a user's query
+     * @param query The query from the user
+     */
+    public processUserQuery(query: string) {
+        // Add the user's message to the message list
+        this.addMessage({ isUser: true, message: query });
         this.forceScroll();
 
         const { processResponse } = this;
 
+        // Send a request to the server for a response to the user query
         fetch('/api/Query/Ask', {
             method: 'POST',
             headers: {
@@ -70,11 +102,14 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                UserInput: value
+                UserInput: query
             })
         }).then(processResponse);
     }
 
+    /**
+     * Handles the enter key press from the text box
+     */
     public onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
         const { key } = event;
         const { processUserQuery } = this;
@@ -90,6 +125,9 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
         }
     }
 
+    /**
+     * Get the current message list to render
+    */
     public getMessages() {
         return this.state.messages.map(message => {
             if (message.isUser) {
@@ -109,6 +147,9 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
         });
     }
 
+    /**
+     * Rendering for the interface
+     */
     public render() {
         if (!this.state.ok) {
             return <h1>Waiting for Veronica...</h1>;
@@ -125,15 +166,11 @@ export class Veronica extends React.Component<RouteComponentProps<{}>, VeronicaS
             </div>;
         }
     }
-
-    /*incrementCounter() {
-        this.setState({
-            currentCount: this.state.currentCount + 1
-        });
-    }*/
 }
 
-
-const TEST_DATA: Message[] = [
+/**
+ * The initial messages to display
+*/
+const INITIAL_MESSAGES: Message[] = [
     { isUser: false, message: "How can I help you?" },
 ]
