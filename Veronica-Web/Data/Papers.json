@@ -1,22 +1,22 @@
 ﻿[
   {
-    "Name": "Contemporary Methods in Software Engineering",
+    "FullName": "Contemporary Methods in Software Engineering",
     "PaperCode": "ENSE701",
-    "Requirements": [ "COMP603", "COMP610", "ENSE600" ],
+    "RequiredPapers": [ "COMP603", "COMP610", "ENSE600" ],
     "Aliases": [ "software engineering", "cmse", "se" ],
     "Jobs": [ "software developer", "software engineer" ]
   },
   {
-    "Name": "Program Design and Construction",
+    "FullName": "Program Design and Construction",
     "PaperCode": "COMP603",
-    "Requirements": [ "COMP503", "COMP610", "ENSE502" ],
+    "RequiredPapers": [ "COMP503", "COMP610", "ENSE502" ],
     "Aliases": [ "program design", "program construction", "pdc" ],
     "Jobs": [ "software developer", "software engineer" ]
   },
   {
-    "Name": "Data Structures and Algorithms",
+    "FullName": "Data Structures and Algorithms",
     "PaperCode": "COMP610",
-    "Requirements": [ "COMP503", "ENSE502" ],
+    "RequiredPapers": [ "COMP503", "ENSE502" ],
     "RequiresAnd": [ "COMP502" ],
     "Aliases": [ "algorithms", "data structures", "dsa" ],
     "Jobs": []

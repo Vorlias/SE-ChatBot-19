@@ -15,7 +15,7 @@ namespace Veronica_Web.Controllers
     [Route("api/[controller]")]
     public class QueryController : Controller
     {
-        Papers papers = new Papers("Data/Papers.json");
+        PapersDatabase papers = new PapersDatabase("Data/Papers.json");
 
         /// <summary>
         /// Gets a result for paper suggestions
@@ -46,10 +46,10 @@ namespace Veronica_Web.Controllers
 
                 if (matchingPaper != null) // If we have a matching paper
                 {
-                    var requirementsString = string.Join(" or ", matchingPaper.Requirements);
+                    var requirementsString = string.Join(" or ", matchingPaper.RequiredPapers);
 
                     // Respond with the requirements for the paper
-                    return QueryResponse.Result($"{matchingPaper.Name} ({matchingPaper.PaperCode}) requires that you have completed {requirementsString}");
+                    return QueryResponse.Result($"{matchingPaper.FullName} ({matchingPaper.PaperCode}) requires that you have completed {requirementsString}");
                 }
                 else  // If we don't have the paper in our data, inform the user.
                 {
