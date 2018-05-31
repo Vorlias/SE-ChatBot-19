@@ -104,9 +104,6 @@ namespace Veronica_Web.Controllers
                     return QueryResponse.Result("I do not yet have the capability to answer that question.");
                 }
             }
-
-            // The last resort response (Should never be reached, hopefully)
-            return QueryResponse.Result("I'm sorry, could you be more clear with what you're asking?");
         }
     }
 }
