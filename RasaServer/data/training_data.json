@@ -74,110 +74,176 @@
         ]
       },
       {
-        "text": "what should i take if i'm doing software development",
-        "intent": "suggested_papers",
+        "text": "what semester is programming languages offered in 2018",
+        "intent": "availability",
         "entities": [
           {
-            "start": 32,
-            "end": 52,
-            "value": "software development",
-            "entity": "major"
+            "start": 50,
+            "end": 54,
+            "value": "2018",
+            "entity": "year"
+          },
+          {
+            "start": 17,
+            "end": 38,
+            "value": "programming languages",
+            "entity": "paper"
+          },
+          {
+            "start": 5,
+            "end": 13,
+            "value": "semester",
+            "entity": "time"
           }
         ]
       },
       {
-        "text": "what should i take for IT service",
-        "intent": "suggested_papers",
+        "text": "when can i do logical database design",
+        "intent": "availability",
         "entities": [
           {
-            "start": 23,
-            "end": 33,
-            "value": "IT service",
-            "entity": "major"
-          }
-        ]
-      },
-      {
-        "text": "what papers are suitable for computer science",
-        "intent": "suggested_papers",
-        "entities": [
-          {
-            "start": 29,
-            "end": 45,
-            "value": "computer science",
-            "entity": "major"
-          }
-        ]
-      },
-      {
-        "text": "networking papers",
-        "intent": "suggested_papers",
-        "entities": [
+            "start": 14,
+            "end": 37,
+            "value": "logical database design",
+            "entity": "paper"
+          },
           {
             "start": 0,
-            "end": 10,
+            "end": 4,
+            "value": "when",
+            "entity": "time"
+          }
+        ]
+      },
+      {
+        "text": "what do i need to take for software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 27,
+            "end": 47,
+            "value": "software engineering",
+            "entity": "paper"
+          }
+        ]
+      },
+      {
+        "text": "what to do for software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 15,
+            "end": 35,
+            "value": "software engineering",
+            "entity": "paper"
+          }
+        ]
+      },
+      {
+        "text": "i want to do software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 13,
+            "end": 33,
+            "value": "software engineering",
+            "entity": "paper"
+          }
+        ]
+      },
+      {
+        "text": "what papers do i need for software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 26,
+            "end": 46,
+            "value": "software engineering",
+            "entity": "paper"
+          }
+        ]
+      },
+      {
+        "text": "how do I get into software engineering",
+        "intent": "paper_requirements",
+        "entities": [
+          {
+            "start": 18,
+            "end": 38,
+            "value": "software engineering",
+            "entity": "paper"
+          }
+        ]
+      },
+      {
+        "text": "what papers should i take for networking?",
+        "intent": "majors",
+        "entities": [
+          {
+            "start": 30,
+            "end": 40,
             "value": "networking",
             "entity": "major"
           }
         ]
       },
       {
-        "text": "what should i do if i want to be a business analyst",
-        "intent": "suggested_papers",
+        "text": "what to take for software development?",
+        "intent": "majors",
         "entities": [
           {
-            "start": 35,
-            "end": 51,
-            "value": "business analyst",
-            "entity": "job"
+            "start": 17,
+            "end": 37,
+            "value": "software development",
+            "entity": "major"
           }
         ]
       },
       {
-        "text": "i want to do project managment",
-        "intent": "suggested_papers",
+        "text": "i want to do the it service major",
+        "intent": "majors",
         "entities": [
           {
-            "start": 13,
-            "end": 30,
-            "value": "project managment",
-            "entity": "job"
+            "start": 17,
+            "end": 27,
+            "value": "it service",
+            "entity": "major"
           }
         ]
       },
       {
-        "text": "i'm looking to be a scrum master",
-        "intent": "suggested_papers",
+        "text": "computer science major",
+        "intent": "majors",
         "entities": [
           {
-            "start": 20,
-            "end": 32,
-            "value": "scrum master",
-            "entity": "job"
+            "start": 0,
+            "end": 16,
+            "value": "computer science",
+            "entity": "major"
           }
         ]
       },
       {
-        "text": "i want to take contemporary methods in software engineering",
-        "intent": "paper_requirements",
+        "text": "i'm thinking of doing computational intelligence",
+        "intent": "majors",
         "entities": [
           {
-            "start": 15,
-            "end": 59,
-            "value": "contemporary methods in software engineering",
-            "entity": "paper"
+            "start": 22,
+            "end": 48,
+            "value": "computational intelligence",
+            "entity": "major"
           }
         ]
       },
       {
-        "text": "what is required for cmse",
-        "intent": "paper_requirements",
+        "text": "information on the analytics major",
+        "intent": "majors",
         "entities": [
           {
-            "start": 21,
-            "end": 25,
-            "value": "cmse",
-            "entity": "paper"
+            "start": 19,
+            "end": 28,
+            "value": "analytics",
+            "entity": "major"
           }
         ]
       }

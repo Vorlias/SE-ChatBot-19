@@ -109,11 +109,11 @@ namespace Veronica_Web.Controllers
 
                 RasaIntent intent = rasaResponse.Intent;
 
-                if (intent?.Name == RasaResponse.INTENT_REQUIREMENTS && intent.Confidence >= 0.5) // Check if our intent is paper_requirements
+                if (intent?.Name == RasaResponse.INTENT_REQUIREMENTS) // Check if our intent is paper_requirements
                 {
                     return GetPaperRequirementResult(rasaResponse);
                 }
-                else if (intent?.Name == RasaResponse.INTENT_SUGGESTION && intent.Confidence >= 0.5) // Else if our intent is a paper suggestion
+                else if (intent?.Name == RasaResponse.INTENT_SUGGESTION) // Else if our intent is a paper suggestion
                 {
                     return GetPaperSuggestionResult(rasaResponse);
                 }
