@@ -40,13 +40,13 @@ namespace RasaLib.Metadata
         public Paper FindPaperByKeyword(string keyword)
         {
             var keywordLower = keyword.ToLower();
-            papers.Where(paper => paper.FullName.ToLower() == keywordLower || 
+            var matchingPapers = papers.Where(paper => paper.FullName.ToLower() == keywordLower || 
                 paper.Aliases.Contains(keywordLower) || 
                 paper.PaperCode.ToLower() == keywordLower);
 
-            if (papers.Count() > 0)
+            if (matchingPapers.Count() > 0)
             {
-                return papers.First();
+                return matchingPapers.First();
             }
 
             return null;
