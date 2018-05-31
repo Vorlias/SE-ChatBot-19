@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RasaLib.Metadata;
 using RasaLib.Rasa;
+using RasaLib.Rasa.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,25 @@ namespace Veronica_Web.Controllers
         /// <returns>A user-friendly response based on the RASA response</returns>
         private JsonResult GetPaperSuggestionResult(RasaResponse response)
         {
-            // TODO: Implement
-            throw new NotImplementedException();
+            // get the entities that match a job
+            var jobs = response.Entities.Where(entity => entity.Entity == RasaResponse.ENTITY_JOB);
+            if (jobs.Count() > 0)
+            {
+                var matchingPapers = papers.FindPapersMatchingJob(jobs.First().Value);
+                if (matchingPapers.Count() > 0)
+                {
+                    string str = $"Papers matching '{jobs.First().Value}'";
+                    foreach (var paper in matchingPapers)
+                    {
+                        str += $"\n{paper.FullName} ({paper.PaperCode})";
+                    }
+                    return QueryResponse.Result(str);
+                }
+                else
+                    return QueryResponse.Result("No papers in my database match that job.");
+            }
+            else
+                return QueryResponse.Result("I'm sorry, I didn't quite get that...");
         }
 
         /// <summary>
@@ -89,12 +107,13 @@ namespace Veronica_Web.Controllers
                     return QueryResponse.Result("I'm only able to answer questions in relations to papers at AUT.");
                 }
 
+                RasaIntent intent = rasaResponse.Intent;
 
-                if (rasaResponse.Intent?.Name == RasaResponse.INTENT_REQUIREMENTS) // Check if our intent is paper_requirements
+                if (intent?.Name == RasaResponse.INTENT_REQUIREMENTS && intent.Confidence >= 0.5) // Check if our intent is paper_requirements
                 {
                     return GetPaperRequirementResult(rasaResponse);
                 }
-                else if (rasaResponse.Intent?.Name == RasaResponse.INTENT_SUGGESTION) // Else if our intent is a paper suggestion
+                else if (intent?.Name == RasaResponse.INTENT_SUGGESTION && intent.Confidence >= 0.5) // Else if our intent is a paper suggestion
                 {
                     return GetPaperSuggestionResult(rasaResponse);
                 }
